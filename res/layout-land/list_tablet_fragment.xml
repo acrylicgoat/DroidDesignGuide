@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+    <fragment
+        android:name="com.acrylicgoat.droiddesign.fragments.DDGListFragment"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:id="@+id/list_fragment"
+        android:layout_weight="20">
+    </fragment>
+    <fragment
+        android:name="com.acrylicgoat.droiddesign.fragments.DDGViewFragment"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:id="@+id/view_fragment"
+        android:layout_weight="80">
+    </fragment>
+</LinearLayout>
