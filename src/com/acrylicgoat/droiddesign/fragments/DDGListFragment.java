@@ -184,7 +184,7 @@ public class DDGListFragment extends SherlockListFragment
         else if(category.equals("patterns"))
         {
             map.put("patterns", "http://developer.android.com/design/patterns/index.html");
-            map.put("New in Android 4.0", "http://developer.android.com/design/patterns/new-4-0.html");
+            map.put("New in Android", "http://developer.android.com/design/patterns/new.html");
             map.put("Gestures","http://developer.android.com/design/patterns/gestures.html");
             map.put("App Structure", "http://developer.android.com/design/patterns/app-structure.html");
             map.put("Navigation", "http://developer.android.com/design/patterns/navigation.html");
@@ -192,9 +192,13 @@ public class DDGListFragment extends SherlockListFragment
             map.put("Multi-pane Layouts", "http://developer.android.com/design/patterns/multi-pane-layouts.html");
             map.put("Swipe Views", "http://developer.android.com/design/patterns/swipe-views.html");
             map.put("Selection", "http://developer.android.com/design/patterns/selection.html");
+            map.put("Confirming & Acknowledging", "http://developer.android.com/design/patterns/confirming-acknowledging.html");
             map.put("Notifications", "http://developer.android.com/design/patterns/notifications.html");
+            map.put("Widgets", "http://developer.android.com/design/patterns/widgets.html");
             map.put("Settings", "http://developer.android.com/design/patterns/settings.html");
+            map.put("Help", "http://developer.android.com/design/patterns/help.html");
             map.put("Compatibility", "http://developer.android.com/design/patterns/compatibility.html");
+            map.put("Accessibility", "http://developer.android.com/design/patterns/accessibility.html");
             map.put("Pure Android", "http://developer.android.com/design/patterns/pure-android.html");
             
         }
@@ -241,7 +245,7 @@ public class DDGListFragment extends SherlockListFragment
         }
         else if(category.equals("patterns"))
         {
-            initialList.add("New in Android 4.0");
+            initialList.add("New in Android");
             initialList.add("Gestures");
             initialList.add("App Structure");
             initialList.add("Navigation");
@@ -249,9 +253,13 @@ public class DDGListFragment extends SherlockListFragment
             initialList.add("Multi-pane Layouts");
             initialList.add("Swipe Views");
             initialList.add("Selection");
+            initialList.add("Confirming & Acknowledging");
             initialList.add("Notifications");
+            initialList.add("Widgets");
             initialList.add("Settings");
+            initialList.add("Help");
             initialList.add("Compatibility");
+            initialList.add("Accessibility");
             initialList.add("Pure Android");
             
         }
