@@ -219,6 +219,39 @@ public class DDGListFragment extends SherlockListFragment
             map.put("Pickers", "http://developer.android.com/design/building-blocks/pickers.html");
             
         }
+        else if(category.equals("play"))
+        {
+            map.put("play", "http://developer.android.com/distribute/index.html");
+            map.put("Visibility", "http://developer.android.com/distribute/googleplay/about/visibility.html");
+            map.put("Monetizing", "http://developer.android.com/distribute/googleplay/about/monetizing.html");
+            map.put("Distribution", "http://developer.android.com/distribute/googleplay/about/distribution.html");
+            
+        }
+        else if(category.equals("publishing"))
+        {
+            map.put("publishing", "http://developer.android.com/distribute/googleplay/publish/index.html");
+            map.put("Get Started", "http://developer.android.com/distribute/googleplay/publish/register.html");
+            map.put("Developer Console", "http://developer.android.com/distribute/googleplay/publish/console.html");
+            map.put("Publishing Checklist", "http://developer.android.com/distribute/googleplay/publish/preparing.html");
+            
+        }
+        else if(category.equals("promoting"))
+        {
+            map.put("promoting", "http://developer.android.com/distribute/googleplay/promote/index.html");
+            map.put("Linking to Your Products", "http://developer.android.com/distribute/googleplay/promote/linking.html");
+            map.put("Google Play Badges", "http://developer.android.com/distribute/googleplay/promote/badges.html");
+            map.put("Device Art Generator", "http://developer.android.com/distribute/promote/device-art.html");
+            map.put("Brand Guidelines", "http://developer.android.com/distribute/googleplay/promote/brand.html");
+            
+        }
+        else if(category.equals("quality"))
+        {
+            map.put("quality", "http://developer.android.com/distribute/googleplay/quality/index.html");
+            map.put("Core App Quality", "http://developer.android.com/distribute/googleplay/quality/core.html");
+            map.put("Tablet App Quality", "http://developer.android.com/distribute/googleplay/quality/tablet.html");
+            map.put("Improving App Quality", "http://developer.android.com/distribute/googleplay/strategies/app-quality.html");
+            
+        }
     }
     
     private void createList()
@@ -278,6 +311,31 @@ public class DDGListFragment extends SherlockListFragment
             initialList.add("Dialogs");
             initialList.add("Pickers");
             
+        }
+        else if(category.equals("play"))
+        {
+            initialList.add("Visibility");
+            initialList.add("Monetizing");
+            initialList.add("Distribution");
+        }
+        else if(category.equals("publishing"))
+        {
+            initialList.add("Get Started");
+            initialList.add("Developer Console");
+            initialList.add("Publishing Checklist");
+        }
+        else if(category.equals("promoting"))
+        {
+            initialList.add("Linking to Your Products");
+            initialList.add("Google Play Badges");
+            initialList.add("Device Art Generator");
+            initialList.add("Brand Guidelines");
+        }
+        else if(category.equals("quality"))
+        {
+            initialList.add("Core App Quality");
+            initialList.add("Tablet App Quality");
+            initialList.add("Improving App Quality");
         }
         
     }
