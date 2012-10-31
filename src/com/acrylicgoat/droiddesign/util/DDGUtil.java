@@ -109,7 +109,26 @@ public class DDGUtil
         map.put("http://developer.android.com/design/building-blocks/pickers.html","Pickers");
             
         
+        map.put("http://developer.android.com/distribute/index.html","play");
+        map.put("http://developer.android.com/distribute/googleplay/about/visibility.html","Visibility");
+        map.put("http://developer.android.com/distribute/googleplay/about/monetizing.html","Monetizing");
+        map.put("http://developer.android.com/distribute/googleplay/about/distribution.html","Distribution");
+   
+        map.put("http://developer.android.com/distribute/googleplay/publish/index.html","publishing");
+        map.put("http://developer.android.com/distribute/googleplay/publish/register.html","Get Started");
+        map.put("http://developer.android.com/distribute/googleplay/publish/console.html","Developer Console");
+        map.put("http://developer.android.com/distribute/googleplay/publish/preparing.html","Publishing Checklist");
     
+        map.put("http://developer.android.com/distribute/googleplay/promote/index.html","promoting");
+        map.put("http://developer.android.com/distribute/googleplay/promote/linking.html","Linking to Your Products");
+        map.put("http://developer.android.com/distribute/googleplay/promote/badges.html","Google Play Badges");
+        map.put("http://developer.android.com/distribute/promote/device-art.html","Device Art Generator");
+        map.put("http://developer.android.com/distribute/googleplay/promote/brand.html","Brand Guidelines");
+        
+        map.put("http://developer.android.com/distribute/googleplay/quality/index.html","quality");
+        map.put("http://developer.android.com/distribute/googleplay/quality/core.html","Core App Quality");
+        map.put("http://developer.android.com/distribute/googleplay/quality/tablet.html","Tablet App Quality");
+        map.put("http://developer.android.com/distribute/googleplay/strategies/app-quality.html","Improving App Quality");
         
     }
 
