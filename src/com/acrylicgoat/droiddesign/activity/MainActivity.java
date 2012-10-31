@@ -73,6 +73,26 @@ public class MainActivity extends SherlockListActivity
                 ContentCache.setObject("category","blocks");
                 ContentCache.setObject("display","Building Blocks");
             }
+            else if(item.equals("Google Play"))
+            {
+                ContentCache.setObject("category","play");
+                ContentCache.setObject("display","Google Play");
+            }
+            else if(item.equals("Publishing"))
+            {
+                ContentCache.setObject("category","publishing");
+                ContentCache.setObject("display","Publishing");
+            }
+            else if(item.equals("Promoting"))
+            {
+                ContentCache.setObject("category","promoting");
+                ContentCache.setObject("display","Promoting");
+            }
+            else if(item.equals("App Quality"))
+            {
+                ContentCache.setObject("category","quality");
+                ContentCache.setObject("display","App Quality");
+            }
             startActivity(new Intent(this, SublistActivity.class));
         }
         
@@ -113,5 +133,9 @@ public class MainActivity extends SherlockListActivity
             initialList.add("Style");
             initialList.add("Patterns");
             initialList.add("Building Blocks");
+            initialList.add("Google Play");
+            initialList.add("Publishing");
+            initialList.add("Promoting");
+            initialList.add("App Quality");
         }
 }
