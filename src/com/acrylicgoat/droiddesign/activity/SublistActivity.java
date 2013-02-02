@@ -11,6 +11,9 @@ import android.net.Uri;
 import android.os.Bundle;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.app.ActionBar;
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuItem;
+
 import android.util.Log;
 import android.view.Display;
 
@@ -83,6 +86,30 @@ public class SublistActivity extends SherlockFragmentActivity implements DDGList
             
         }
         
+    }
+    
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) 
+    {
+        getSupportMenuInflater().inflate(R.menu.actionbar_menu, menu);
+        return true;
+    }
+    
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) 
+    {
+        if(item.getItemId() == R.id.ddg)
+        {
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://developer.android.com/design/index.html"));
+            startActivity(browserIntent);
+        }
+        else if(item.getItemId() == android.R.id.home)
+        {
+            Intent mainIntent = new Intent(getApplicationContext(), MainActivity.class);
+            mainIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(mainIntent);
+        }
+        return true;
     }
     
     @Override
