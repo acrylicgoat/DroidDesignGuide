@@ -11,9 +11,13 @@ import java.util.ArrayList;
 import com.acrylicgoat.droiddesign.R;
 import com.acrylicgoat.droiddesign.adapters.ListAdapter;
 import com.acrylicgoat.droiddesign.util.ContentCache;
+import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.SherlockListActivity;
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuItem;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
@@ -46,6 +50,26 @@ public class MainActivity extends SherlockListActivity
             finishedLoadingList();
                 
             setListAdapter(adapter);
+            ActionBar actionBar = getSupportActionBar();
+            actionBar.setDisplayHomeAsUpEnabled(false);
+        }
+        
+        @Override
+        public boolean onCreateOptionsMenu(Menu menu) 
+        {
+            getSupportMenuInflater().inflate(R.menu.actionbar_menu, menu);
+            return true;
+        }
+        
+        @Override
+        public boolean onOptionsItemSelected(MenuItem item) 
+        {
+            if(item.getItemId() == R.id.ddg)
+            {
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://developer.android.com/design/index.html"));
+                startActivity(browserIntent);
+            }
+            return true;
         }
         
         
