@@ -21,7 +21,7 @@ import android.os.Bundle;
 import com.actionbarsherlock.app.ActionBar;
 import android.app.Activity;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
-//import android.util.Log;
+import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
 
@@ -47,40 +47,7 @@ public class DDGListFragment extends SherlockListFragment
     public void onListItemClick(ListView l, View v, int position, long id) 
     {
 
-//        if(curPosition != -1)
-//        {
-//            //Log.d("DDGListFragment", "curPosition = " + curPosition);
-//            if(dualFragments)
-//            {
-//                l.getChildAt(curPosition).setBackgroundResource(R.color.transparent);
-//            }
-//            adapter.notifyDataSetChanged();
-//        }
-//        
-//        curPosition = position;
-//        String item = (String)l.getItemAtPosition(position);
-//        selectPosition();
-//        if(dualFragments)
-//        {
-//            l.getChildAt(position).setBackgroundResource(R.color.color_list_background_selected);
-//            if(aBar != null)
-//            {
-//                aBar.setSubtitle(item);
-//            }
-//        }
-//        adapter.notifyDataSetChanged();
-//        String url = getURL(item);
-//        ddgSelectedListener.onDDGSelected(url);
-//      if(curPosition != -1 && prevView != null)
-//      {
-//          //Log.d("DDGListFragment", "curPosition = " + curPosition);
-//          if(dualFragments)
-//          {
-//             prevView.setBackgroundResource(R.color.transparent);
-//          }
-//          adapter.notifyDataSetChanged();
-//          
-//      }
+
       
       v.setSelected(true);
       curPosition = position;
@@ -214,8 +181,8 @@ public class DDGListFragment extends SherlockListFragment
         // Only if we're showing both fragments should the item be "highlighted"
         if (dualFragments) 
         {
-            //Log.d("DDGListFragment.selectPosition()","using dualFragments" );
-            //Log.d("DDGListFragment.selectPosition()","position = " + curPosition);
+            Log.d("DDGListFragment.selectPosition()","using dualFragments" );
+            Log.d("DDGListFragment.selectPosition()","position = " + curPosition);
             ListView lv = getListView();
             lv.setItemChecked(curPosition, true);
         }
