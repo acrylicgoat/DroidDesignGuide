@@ -133,8 +133,8 @@ public class MainActivity extends SherlockListActivity
         {
             setListAdapter(adapter);
             getListView().setSelection(0);
-            getListView().setSaveEnabled(true);
-            getListView().setClickable(true);
+            //getListView().setSaveEnabled(true);
+            //getListView().setClickable(true);
         }
         
         /**
