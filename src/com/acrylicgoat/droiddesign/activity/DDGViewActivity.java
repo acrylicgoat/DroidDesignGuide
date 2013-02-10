@@ -12,10 +12,13 @@ import com.acrylicgoat.droiddesign.util.ContentCache;
 
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.net.Uri;
 import android.os.Bundle;
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 //import android.util.Log;
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuItem;
 
 /**
  * @author ew2
@@ -51,7 +54,33 @@ public class DDGViewActivity extends SherlockFragmentActivity
         ActionBar actionBar = getSupportActionBar();
         //Log.d("DDGViewActivity", "category = " + category);
         actionBar.setTitle(category);
+        actionBar.setDisplayHomeAsUpEnabled(true);
         
+    }
+    
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) 
+    {
+        getSupportMenuInflater().inflate(R.menu.actionbar_menu, menu);
+        return true;
+    }
+    
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) 
+    {
+        if(item.getItemId() == R.id.ddg)
+        {
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://developer.android.com/design/index.html"));
+            startActivity(browserIntent);
+        }
+        else if(item.getItemId() == android.R.id.home)
+        {
+            Intent mainIntent = new Intent(getApplicationContext(), MainActivity.class);
+            mainIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(mainIntent);
+        }
+        
+        return true;
     }
     
     /* (non-Javadoc)
