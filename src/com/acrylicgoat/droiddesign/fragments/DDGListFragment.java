@@ -9,6 +9,7 @@ package com.acrylicgoat.droiddesign.fragments;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import com.acrylicgoat.droiddesign.adapters.LandscapeListAdapter;
 import com.acrylicgoat.droiddesign.adapters.ListAdapter;
 import com.acrylicgoat.droiddesign.util.ContentCache;
 import com.acrylicgoat.droiddesign.util.DDGUtil;
@@ -20,7 +21,7 @@ import android.os.Bundle;
 import com.actionbarsherlock.app.ActionBar;
 import android.app.Activity;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
-//import android.util.Log;
+import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
 
@@ -39,35 +40,39 @@ public class DDGListFragment extends SherlockListFragment
     boolean dualFragments = false;
     ActionBar aBar;
     SherlockFragmentActivity sherActivity;
+    LandscapeListAdapter landAdapter;
+    View prevView;
 
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) 
     {
 
-        if(curPosition != -1)
-        {
-            //Log.d("DDGListFragment", "curPosition = " + curPosition);
-            if(dualFragments)
-            {
-                l.getChildAt(curPosition).setBackgroundResource(R.color.transparent);
-            }
-            adapter.notifyDataSetChanged();
-        }
-        
-        curPosition = position;
-        String item = (String)l.getItemAtPosition(position);
-        selectPosition();
-        if(dualFragments)
-        {
-            l.getChildAt(position).setBackgroundResource(R.color.color_list_background_selected);
-            if(aBar != null)
-            {
-                aBar.setSubtitle(item);
-            }
-        }
-        adapter.notifyDataSetChanged();
-        String url = getURL(item);
-        ddgSelectedListener.onDDGSelected(url);
+
+      
+      v.setSelected(true);
+      curPosition = position;
+      prevView = v;
+      String item = (String)l.getItemAtPosition(position);
+      selectPosition();
+      if(dualFragments)
+      {
+          //v.setBackgroundResource(R.color.color_list_background_selected);
+         //l.getChildAt(position).setBackgroundResource(R.color.color_list_background_selected);
+          //View view = (View)l.getAdapter().getItem(position);
+          //view.setBackgroundResource(R.color.color_list_background_selected);
+          if(aBar != null)
+          {
+              aBar.setSubtitle(item);
+          }
+          landAdapter.notifyDataSetChanged();
+      }
+      else
+      {
+          adapter.notifyDataSetChanged();
+      }
+      
+      String url = getURL(item);
+      ddgSelectedListener.onDDGSelected(url);
     }
 
     @Override
@@ -82,6 +87,10 @@ public class DDGListFragment extends SherlockListFragment
         if(category == null)
         {
             category = (String)savedInstanceState.getSerializable("category");
+            if(category == null)
+            {
+                category = "";
+            }
             map = (HashMap<String,String>)savedInstanceState.getSerializable("map");
         }
         else
@@ -89,8 +98,8 @@ public class DDGListFragment extends SherlockListFragment
             createURLMap();
         }
         createList();
-        adapter = new ListAdapter(getActivity().getApplicationContext(), initialList);
-        setListAdapter(adapter);
+        //adapter = new ListAdapter(getActivity().getApplicationContext(), initialList);
+        //setListAdapter(adapter);
         
     }
     
@@ -100,7 +109,9 @@ public class DDGListFragment extends SherlockListFragment
         super.onActivityCreated(savedInstanceState);
         ListView lv = getListView();
         lv.setCacheColorHint(Color.TRANSPARENT);
-        lv.setBackgroundResource(R.color.color_list_background);
+        //lv.setSelector(R.drawable.list_background);
+        //lv.setBackgroundResource(R.color.color_list_background);
+        getListView().setChoiceMode(ListView.CHOICE_MODE_SINGLE);
         
         if (DDGUtil.isTabletDevice(getActivity().getWindowManager().getDefaultDisplay(),getActivity()))
         {
@@ -109,6 +120,19 @@ public class DDGListFragment extends SherlockListFragment
             dualFragments = true;
         }
         aBar = sherActivity.getSupportActionBar();
+        
+        if(dualFragments)
+        {
+            landAdapter = new LandscapeListAdapter(getActivity().getApplicationContext(), initialList);
+            setListAdapter(landAdapter);
+            
+        }
+        else
+        {
+            adapter = new ListAdapter(getActivity().getApplicationContext(), initialList);
+            setListAdapter(adapter);
+            lv.setBackgroundResource(R.color.color_list_background);
+        }
         
     }
     
@@ -120,6 +144,15 @@ public class DDGListFragment extends SherlockListFragment
         ContentCache.setObject("categoryList", initialList);
         ContentCache.setObject("categoryMap", map);
         outState.putInt("listPostion", curPosition);
+        
+    }
+    
+    public void onPause()
+    {
+        super.onPause();
+        ContentCache.setObject("category", category);
+        ContentCache.setObject("categoryList", initialList);
+        ContentCache.setObject("categoryMap", map);
         
     }
 
@@ -148,8 +181,8 @@ public class DDGListFragment extends SherlockListFragment
         // Only if we're showing both fragments should the item be "highlighted"
         if (dualFragments) 
         {
-            //Log.d("DDGListFragment.selectPosition()","using dualFragments" );
-            //Log.d("DDGListFragment.selectPosition()","position = " + curPosition);
+            Log.d("DDGListFragment.selectPosition()","using dualFragments" );
+            Log.d("DDGListFragment.selectPosition()","position = " + curPosition);
             ListView lv = getListView();
             lv.setItemChecked(curPosition, true);
         }

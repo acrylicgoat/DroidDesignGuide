@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item android:id="@+id/ddg"
+          android:title="@string/menu_ddg"
+          android:icon="@drawable/globe" 
+          android:showAsAction="ifRoom"/>
     
 
 </menu>
