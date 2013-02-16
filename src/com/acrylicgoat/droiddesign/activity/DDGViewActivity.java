@@ -68,17 +68,31 @@ public class DDGViewActivity extends SherlockFragmentActivity
     @Override
     public boolean onOptionsItemSelected(MenuItem item) 
     {
-        if(item.getItemId() == R.id.ddg)
+        int itemId = item.getItemId();
+        switch (itemId)
         {
-            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://developer.android.com/design/index.html"));
-            startActivity(browserIntent);
+            case R.id.ddg:
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://developer.android.com/design/index.html"));
+                startActivity(browserIntent);
+                break;
+            case android.R.id.home:
+                Intent mainIntent = new Intent(getApplicationContext(), MainActivity.class);
+               mainIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+               startActivity(mainIntent);
+            default:
+                break;
         }
-        else if(item.getItemId() == android.R.id.home)
-        {
-            Intent mainIntent = new Intent(getApplicationContext(), MainActivity.class);
-            mainIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(mainIntent);
-        }
+//        if(item.getItemId() == R.id.ddg)
+//        {
+//            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://developer.android.com/design/index.html"));
+//            startActivity(browserIntent);
+//        }
+//        else if(item.getItemId() == android.R.id.home)
+//        {
+//            Intent mainIntent = new Intent(getApplicationContext(), MainActivity.class);
+//            mainIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//            startActivity(mainIntent);
+//        }
         
         return true;
     }
