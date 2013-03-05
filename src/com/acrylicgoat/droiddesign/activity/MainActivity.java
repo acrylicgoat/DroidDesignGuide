@@ -64,12 +64,30 @@ public class MainActivity extends SherlockListActivity
         @Override
         public boolean onOptionsItemSelected(MenuItem item) 
         {
-            if(item.getItemId() == R.id.ddg)
+            int itemId = item.getItemId();
+            switch (itemId)
             {
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://developer.android.com/design/index.html"));
-                startActivity(browserIntent);
+                case R.id.ddg:
+                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.bcponline.org/"));
+                    startActivity(browserIntent);
+                case R.id.rate:
+                    //displayRateDialog(getApplicationContext());
+                    openPlayStore();
+                default:
+                    break;
             }
+            
+//            if(item.getItemId() == R.id.ddg)
+//            {
+//                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://developer.android.com/design/index.html"));
+//                startActivity(browserIntent);
+//            }
             return true;
+        }
+        
+        private void openPlayStore()
+        {
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=com.acrylicgoat.droiddesign")));
         }
         
         
