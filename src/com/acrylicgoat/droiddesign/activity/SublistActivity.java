@@ -109,10 +109,19 @@ public class SublistActivity extends SherlockFragmentActivity implements DDGList
                 Intent mainIntent = new Intent(getApplicationContext(), MainActivity.class);
                mainIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                startActivity(mainIntent);
+            case R.id.rate:
+                //displayRateDialog(getApplicationContext());
+                openPlayStore();
+                break;
             default:
                 break;
         }
         return true;
+    }
+    
+    private void openPlayStore()
+    {
+        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=com.acrylicgoat.droiddesign")));
     }
     
     @Override
