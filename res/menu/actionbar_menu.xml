@@ -4,6 +4,10 @@
           android:title="@string/menu_ddg"
           android:icon="@drawable/globe" 
           android:showAsAction="ifRoom"/>
+    <item android:id="@+id/rate"
+          android:title="@string/menu_rate"
+          android:icon="@drawable/globe" 
+          android:showAsAction="never"/>
     
 
 </menu>

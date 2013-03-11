@@ -4,5 +4,6 @@
     <string name="hello">Hello World, MainActivity!</string>
     <string name="app_name">Droid Design Guide</string>
     <string name="menu_ddg">Android Design Guide</string>
+    <string name="menu_rate">Rate This App</string>
 
 </resources>
