@@ -68,7 +68,7 @@ public class MainActivity extends SherlockListActivity
             switch (itemId)
             {
                 case R.id.ddg:
-                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.bcponline.org/"));
+                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://developer.android.com/design/index.html"));
                     startActivity(browserIntent);
                 case R.id.rate:
                     //displayRateDialog(getApplicationContext());
