@@ -79,22 +79,22 @@ public class DDGViewActivity extends SherlockFragmentActivity
                 Intent mainIntent = new Intent(getApplicationContext(), MainActivity.class);
                mainIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                startActivity(mainIntent);
+               break;
+            case R.id.rate:
+                //displayRateDialog(getApplicationContext());
+                openPlayStore();
+                break;
             default:
                 break;
         }
-//        if(item.getItemId() == R.id.ddg)
-//        {
-//            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://developer.android.com/design/index.html"));
-//            startActivity(browserIntent);
-//        }
-//        else if(item.getItemId() == android.R.id.home)
-//        {
-//            Intent mainIntent = new Intent(getApplicationContext(), MainActivity.class);
-//            mainIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//            startActivity(mainIntent);
-//        }
+
         
         return true;
+    }
+    
+    private void openPlayStore()
+    {
+        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=com.acrylicgoat.droiddesign")));
     }
     
     /* (non-Javadoc)
