@@ -70,9 +70,11 @@ public class MainActivity extends SherlockListActivity
                 case R.id.ddg:
                     Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://developer.android.com/design/index.html"));
                     startActivity(browserIntent);
+                    break;
                 case R.id.rate:
                     //displayRateDialog(getApplicationContext());
                     openPlayStore();
+                    break;
                 default:
                     break;
             }
