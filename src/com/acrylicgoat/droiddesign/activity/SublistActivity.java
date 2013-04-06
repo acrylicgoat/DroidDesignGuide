@@ -8,14 +8,18 @@ package com.acrylicgoat.droiddesign.activity;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.app.ActionBar;
+import com.actionbarsherlock.app.ActionBar.OnNavigationListener;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
 
 import android.util.Log;
 import android.view.Display;
+import android.widget.ArrayAdapter;
+import android.widget.SpinnerAdapter;
 
 import com.acrylicgoat.droiddesign.R;
 import com.acrylicgoat.droiddesign.fragments.*;
@@ -29,6 +33,7 @@ import com.acrylicgoat.droiddesign.util.DDGUtil;
 public class SublistActivity extends SherlockFragmentActivity implements DDGListFragment.OnDDGSelectedListener
 {
     private String category;
+    ActionBar actionBar;
     
     @Override
     public void onCreate(Bundle savedInstanceState) 
@@ -52,7 +57,8 @@ public class SublistActivity extends SherlockFragmentActivity implements DDGList
             category = (String)savedInstanceState.getSerializable("display");
         }
         
-        ActionBar actionBar = getSupportActionBar();
+        actionBar = getSupportActionBar();
+        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
         //Log.d("SublistActivity", "category = " + category);
         actionBar.setTitle(category);
         actionBar.setDisplayShowHomeEnabled(true);
@@ -92,6 +98,40 @@ public class SublistActivity extends SherlockFragmentActivity implements DDGList
     public boolean onCreateOptionsMenu(Menu menu) 
     {
         getSupportMenuInflater().inflate(R.menu.actionbar_menu, menu);
+        
+        SpinnerAdapter mSpinnerAdapter;
+        if(Build.VERSION.SDK_INT <= 10) 
+        {
+            mSpinnerAdapter = ArrayAdapter.createFromResource(this, R.array.nav_list,android.R.layout.simple_spinner_item);
+        }
+        else
+        {
+            mSpinnerAdapter = ArrayAdapter.createFromResource(this, R.array.nav_list,android.R.layout.simple_spinner_dropdown_item);
+        }
+        OnNavigationListener mOnNavigationListener = new OnNavigationListener() 
+        {
+            // Get the same strings provided for the drop-down's ArrayAdapter
+            //String[] strings = getResources().getStringArray(R.array.nav_list);
+
+            @Override
+            public boolean onNavigationItemSelected(int position, long itemId) 
+            {
+              switch (position)
+              {
+                  case 1:
+                      Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://developer.android.com/design/index.html"));
+                      startActivity(browserIntent);
+                      break;
+                  case 2:
+                      openPlayStore();
+                      break;
+              }
+              
+              return true;
+            }
+          };
+          
+          actionBar.setListNavigationCallbacks(mSpinnerAdapter, mOnNavigationListener);
         return true;
     }
     
