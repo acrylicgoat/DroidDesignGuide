@@ -127,6 +127,13 @@ public class MainActivity extends SherlockListActivity
             return true;
         }
         
+        @Override
+        public void onResume()
+        {
+            actionBar.setSelectedNavigationItem(0);
+            super.onResume();
+        }
+        
         private void openPlayStore()
         {
             startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=com.acrylicgoat.droiddesign")));
