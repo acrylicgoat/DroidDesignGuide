@@ -171,7 +171,8 @@ public class SublistActivity extends SherlockFragmentActivity implements DDGList
         super.onResume();
         String category = (String)ContentCache.getObject("display");
         
-        ActionBar actionBar = getSupportActionBar();
+        //ActionBar actionBar = getSupportActionBar();
+        actionBar.setSelectedNavigationItem(0);
         actionBar.setTitle(category);
     }
     
