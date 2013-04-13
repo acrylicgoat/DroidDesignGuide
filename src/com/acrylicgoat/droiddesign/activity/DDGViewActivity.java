@@ -13,9 +13,14 @@ import com.acrylicgoat.droiddesign.util.ContentCache;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
+import android.widget.SpinnerAdapter;
+
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
+import com.actionbarsherlock.app.ActionBar.OnNavigationListener;
 //import android.util.Log;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
@@ -28,6 +33,7 @@ public class DDGViewActivity extends SherlockFragmentActivity
 {
     String url;
     DDGViewFragment viewer;
+    ActionBar actionBar;
     
     @Override
     public void onCreate(Bundle savedInstanceState) 
@@ -51,7 +57,8 @@ public class DDGViewActivity extends SherlockFragmentActivity
 
         String category = (String)ContentCache.getObject("webName");
         
-        ActionBar actionBar = getSupportActionBar();
+        actionBar = getSupportActionBar();
+        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
         //Log.d("DDGViewActivity", "category = " + category);
         actionBar.setTitle(category);
         actionBar.setDisplayHomeAsUpEnabled(true);
@@ -62,6 +69,40 @@ public class DDGViewActivity extends SherlockFragmentActivity
     public boolean onCreateOptionsMenu(Menu menu) 
     {
         getSupportMenuInflater().inflate(R.menu.actionbar_menu, menu);
+        
+        SpinnerAdapter mSpinnerAdapter;
+        if(Build.VERSION.SDK_INT <= 10) 
+        {
+            mSpinnerAdapter = ArrayAdapter.createFromResource(this, R.array.nav_list,android.R.layout.simple_spinner_item);
+        }
+        else
+        {
+            mSpinnerAdapter = ArrayAdapter.createFromResource(this, R.array.nav_list,android.R.layout.simple_spinner_dropdown_item);
+        }
+        OnNavigationListener mOnNavigationListener = new OnNavigationListener() 
+        {
+            // Get the same strings provided for the drop-down's ArrayAdapter
+            //String[] strings = getResources().getStringArray(R.array.nav_list);
+
+            @Override
+            public boolean onNavigationItemSelected(int position, long itemId) 
+            {
+              switch (position)
+              {
+                  case 1:
+                      Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://developer.android.com/design/index.html"));
+                      startActivity(browserIntent);
+                      break;
+                  case 2:
+                      openPlayStore();
+                      break;
+              }
+              
+              return true;
+            }
+          };
+          
+          actionBar.setListNavigationCallbacks(mSpinnerAdapter, mOnNavigationListener);
         return true;
     }
     
@@ -90,6 +131,13 @@ public class DDGViewActivity extends SherlockFragmentActivity
 
         
         return true;
+    }
+    
+    @Override
+    public void onResume()
+    {
+        actionBar.setSelectedNavigationItem(0);
+        super.onResume();
     }
     
     private void openPlayStore()

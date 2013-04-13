@@ -13,20 +13,25 @@ import com.acrylicgoat.droiddesign.adapters.ListAdapter;
 import com.acrylicgoat.droiddesign.util.ContentCache;
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.SherlockListActivity;
+import com.actionbarsherlock.app.ActionBar.OnNavigationListener;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.SpinnerAdapter;
 
 public class MainActivity extends SherlockListActivity 
 {
     
         ArrayList<String> initialList;
         ListAdapter adapter;
+        ActionBar actionBar;
         
         /** Called when the activity is first created. */
         @Override
@@ -34,7 +39,8 @@ public class MainActivity extends SherlockListActivity
         {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.list_view);
-            
+            actionBar = getSupportActionBar();
+            actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
             initialList = (ArrayList<String>)getLastNonConfigurationInstance();
             if(initialList==null && savedInstanceState != null)
             {
@@ -50,7 +56,7 @@ public class MainActivity extends SherlockListActivity
             finishedLoadingList();
                 
             setListAdapter(adapter);
-            ActionBar actionBar = getSupportActionBar();
+            //ActionBar actionBar = getSupportActionBar();
             actionBar.setDisplayHomeAsUpEnabled(false);
         }
         
@@ -58,6 +64,40 @@ public class MainActivity extends SherlockListActivity
         public boolean onCreateOptionsMenu(Menu menu) 
         {
             getSupportMenuInflater().inflate(R.menu.actionbar_menu, menu);
+            
+            SpinnerAdapter mSpinnerAdapter;
+            if(Build.VERSION.SDK_INT <= 10) 
+            {
+                mSpinnerAdapter = ArrayAdapter.createFromResource(this, R.array.nav_list,android.R.layout.simple_spinner_item);
+            }
+            else
+            {
+                mSpinnerAdapter = ArrayAdapter.createFromResource(this, R.array.nav_list,android.R.layout.simple_spinner_dropdown_item);
+            }
+            OnNavigationListener mOnNavigationListener = new OnNavigationListener() 
+            {
+                // Get the same strings provided for the drop-down's ArrayAdapter
+                //String[] strings = getResources().getStringArray(R.array.nav_list);
+
+                @Override
+                public boolean onNavigationItemSelected(int position, long itemId) 
+                {
+                  switch (position)
+                  {
+                      case 1:
+                          Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://developer.android.com/design/index.html"));
+                          startActivity(browserIntent);
+                          break;
+                      case 2:
+                          openPlayStore();
+                          break;
+                  }
+                  
+                  return true;
+                }
+              };
+              
+              actionBar.setListNavigationCallbacks(mSpinnerAdapter, mOnNavigationListener);
             return true;
         }
         
@@ -85,6 +125,13 @@ public class MainActivity extends SherlockListActivity
 //                startActivity(browserIntent);
 //            }
             return true;
+        }
+        
+        @Override
+        public void onResume()
+        {
+            actionBar.setSelectedNavigationItem(0);
+            super.onResume();
         }
         
         private void openPlayStore()
