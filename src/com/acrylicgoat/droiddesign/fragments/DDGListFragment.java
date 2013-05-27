@@ -222,6 +222,7 @@ public class DDGListFragment extends SherlockListFragment
             map.put("App Structure", "http://developer.android.com/design/patterns/app-structure.html");
             map.put("Navigation", "http://developer.android.com/design/patterns/navigation.html");
             map.put("Action Bar", "http://developer.android.com/design/patterns/actionbar.html");
+            map.put("Navigation Drawer", "http://developer.android.com/design/patterns/navigation-drawer.html");
             map.put("Multi-pane Layouts", "http://developer.android.com/design/patterns/multi-pane-layouts.html");
             map.put("Swipe Views", "http://developer.android.com/design/patterns/swipe-views.html");
             map.put("Selection", "http://developer.android.com/design/patterns/selection.html");
@@ -265,6 +266,7 @@ public class DDGListFragment extends SherlockListFragment
             map.put("publishing", "http://developer.android.com/distribute/googleplay/publish/index.html");
             map.put("Get Started", "http://developer.android.com/distribute/googleplay/publish/register.html");
             map.put("Developer Console", "http://developer.android.com/distribute/googleplay/publish/console.html");
+            map.put("Localization Checklist", "http://developer.android.com/distribute/googleplay/publish/localizing.html");
             map.put("Publishing Checklist", "http://developer.android.com/distribute/googleplay/publish/preparing.html");
             
         }
@@ -316,6 +318,7 @@ public class DDGListFragment extends SherlockListFragment
             initialList.add("App Structure");
             initialList.add("Navigation");
             initialList.add("Action Bar");
+            initialList.add("Navigation Drawer");
             initialList.add("Multi-pane Layouts");
             initialList.add("Swipe Views");
             initialList.add("Selection");
@@ -355,6 +358,7 @@ public class DDGListFragment extends SherlockListFragment
         {
             initialList.add("Get Started");
             initialList.add("Developer Console");
+            initialList.add("Localization Checklist");
             initialList.add("Publishing Checklist");
         }
         else if(category.equals("promoting"))
