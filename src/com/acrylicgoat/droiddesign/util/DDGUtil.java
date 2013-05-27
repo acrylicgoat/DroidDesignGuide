@@ -86,6 +86,7 @@ public class DDGUtil
         map.put("http://developer.android.com/design/patterns/app-structure.html","App Structure");
         map.put("http://developer.android.com/design/patterns/navigation.html","Navigation");
         map.put("http://developer.android.com/design/patterns/actionbar.html","Action Bar");
+        map.put("http://developer.android.com/design/patterns/navigation-drawer.html","Navigation Drawer");
         map.put("http://developer.android.com/design/patterns/multi-pane-layouts.html","Multi-pane Layouts");
         map.put("http://developer.android.com/design/patterns/swipe-views.html","Swipe Views");
         map.put("http://developer.android.com/design/patterns/selection.html","Selection");
@@ -117,6 +118,7 @@ public class DDGUtil
         map.put("http://developer.android.com/distribute/googleplay/publish/index.html","publishing");
         map.put("http://developer.android.com/distribute/googleplay/publish/register.html","Get Started");
         map.put("http://developer.android.com/distribute/googleplay/publish/console.html","Developer Console");
+        map.put("http://developer.android.com/distribute/googleplay/publish/localizing.html","Localization Checklist");
         map.put("http://developer.android.com/distribute/googleplay/publish/preparing.html","Publishing Checklist");
     
         map.put("http://developer.android.com/distribute/googleplay/promote/index.html","promoting");
